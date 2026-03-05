@@ -52,23 +52,17 @@ function setupModal() {
 
     if (!modal) return;
 
-    if (openBtn) {
-        openBtn.addEventListener("click", () => {
-            modal.classList.add("active");
-        });
-    }
+    openBtn?.addEventListener("click", () => {
+        modal.classList.add("active");
+    });
 
-    if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-            modal.classList.remove("active");
-        });
-    }
+    closeBtn?.addEventListener("click", () => {
+        modal.classList.remove("active");
+    });
 
-    if (cancelBtn) {
-        cancelBtn.addEventListener("click", () => {
-            modal.classList.remove("active");
-        });
-    }
+    cancelBtn?.addEventListener("click", () => {
+        modal.classList.remove("active");
+    });
 
     modal.addEventListener("click", (e) => {
         if (e.target === modal) {
@@ -96,10 +90,27 @@ function setupTicketForm() {
         const priority = formData.get("priority");
         const assignedTo = formData.get("assignedTo");
         const dueDate = formData.get("dueDate");
+        const estimatedTimeRaw = formData.get("estimatedTime");
 
-        const createdDate = new Date().toISOString().split("T")[0];
+        let formattedEstimatedTime = "-";
+            
+        if (estimatedTimeRaw) {
+            const [hours, minutes] = estimatedTimeRaw.split(":");
+        
+            let hour = parseInt(hours);
+            const ampm = hour >= 12 ? "PM" : "AM";
+        
+            hour = hour % 12;
+            hour = hour ? hour : 12; // 0 becomes 12
+        
+            formattedEstimatedTime = `${hour}:${minutes} ${ampm}`;
+        }
 
-        // Sanitize class (important if value has spaces)
+        // Get full date + time
+        const now = new Date();
+        const createdDateTime = now.toLocaleDateString() + " " + 
+                                now.toLocaleTimeString();
+
         const priorityClass = priority
             ? priority.toLowerCase().replace(/\s+/g, "-")
             : "low";
@@ -113,12 +124,12 @@ function setupTicketForm() {
             priorityClass,
             assignedTo,
             dueDate,
-            createdDate
+            estimatedTime: formattedEstimatedTime,
+            createdDateTime
         });
 
         form.reset();
-
-        if (modal) modal.classList.remove("active");
+        modal?.classList.remove("active");
     });
 }
 
@@ -144,7 +155,8 @@ function renderTicket(ticket) {
         </td>
         <td>${ticket.assignedTo}</td>
         <td>${ticket.dueDate || "-"}</td>
-        <td>${ticket.createdDate}</td>
+        <td>${ticket.estimatedTime || "-"}</td>
+        <td>${ticket.createdDateTime}</td>
         <td>
             <button class="action-btn">View</button>
         </td>
