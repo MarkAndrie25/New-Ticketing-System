@@ -4,6 +4,7 @@ function init() {
     setupNavigation();
     setupModal();
     setupTicketForm();
+    setupUserModal();
 }
 
 /* ===============================
@@ -163,4 +164,38 @@ function renderTicket(ticket) {
     `;
 
     tableBody.prepend(newRow);
+}
+
+
+/* ===============================
+   USER MODAL
+================================ */
+
+function setupUserModal(){
+
+    const modal = document.getElementById("userModal");
+    const openBtn = document.querySelector(".create-user");
+    const closeBtn = document.querySelector(".close-user-modal");
+    const cancelBtn = document.querySelector(".cancel-user-btn");
+
+    if(!modal) return;
+
+    openBtn.addEventListener("click", () => {
+        modal.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+        modal.classList.remove("active");
+    });
+
+    cancelBtn.addEventListener("click", () => {
+        modal.classList.remove("active");
+    });
+
+    modal.addEventListener("click", (e) => {
+        if(e.target === modal){
+            modal.classList.remove("active");
+        }
+    });
+
 }

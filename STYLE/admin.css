@@ -351,6 +351,207 @@ main {
     background-color: #f9fafb;
 }
 
+/* ===============================
+   USERS PAGE
+================================*/
+
+.user-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.create-user{
+    padding:8px 16px;
+    border:none;
+    background-color:var(--accent-blue);
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.create-user:hover{
+    opacity:0.9;
+}
+
+/* controls */
+
+.user-control{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+/* table */
+
+.user-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+}
+
+.user-table thead{
+    background:#f3f4f6;
+}
+
+.user-table th,
+.user-table td{
+    padding:12px 14px;
+    text-align:left;
+    white-space:nowrap;
+}
+
+.user-table tbody tr{
+    border-top:1px solid #e5e7eb;
+}
+
+.user-table tbody tr:hover{
+    background:#f9fafb;
+}
+
+/* status */
+
+.status-active{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.status-inactive{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+/* action button */
+
+.view-user-btn{
+    padding:6px 10px;
+    border:none;
+    background:#e5e7eb;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.view-user-btn:hover{
+    background:#d1d5db;
+}
+
+/* USERS MODAL BUTTON */
+
+.create-user{
+    padding:8px 16px;
+    border:none;
+    background-color:var(--accent-blue);
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.create-user:hover{
+    opacity:0.9;
+}
+
+/* ===============================
+   USER MODAL BUTTONS
+================================*/
+
+.modal-actions{
+    grid-column: span 2;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:15px;
+}
+
+/* cancel button */
+
+.btn-cancel-user{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    padding:8px 14px;
+
+    border:none;
+    border-radius:6px;
+
+    background:#e5e7eb;
+    color:var(--text-dark);
+
+    font-size:13px;
+    font-weight:500;
+
+    cursor:pointer;
+
+    transition:0.2s ease;
+}
+
+.btn-cancel-user:hover{
+    background:#d1d5db;
+}
+
+/* create user */
+
+.btn-create-user{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    padding:8px 16px;
+
+    border:none;
+    border-radius:6px;
+
+    background:var(--accent-blue);
+    color:white;
+
+    font-size:13px;
+    font-weight:500;
+
+    cursor:pointer;
+
+    transition:0.2s ease;
+}
+
+.btn-create-user:hover{
+    background:#2563eb;
+}
+
+/* click animation */
+
+.btn-create-user:active,
+.btn-cancel-user:active{
+    transform:scale(0.96);
+}
+
+.close-user-modal{
+    width:30px;
+    height:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:50%;
+
+    background:transparent;
+
+    font-size:18px;
+    color:var(--text-light);
+
+    cursor:pointer;
+    transition:0.2s ease;
+}
+
+.close-user-modal:hover{
+    background:#f3f4f6;
+    color:var(--text-dark);
+}
+
 /* BADGES */
 .badge {
     padding: 4px 10px;
@@ -479,6 +680,7 @@ main {
 .submit-btn:hover {
     opacity: 0.9;
 }
+
 
 /* ===== ANIMATION ===== */
 @keyframes fadeIn {

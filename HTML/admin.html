@@ -204,7 +204,125 @@
 
         <!-- Users Page -->
         <section id="users" class="content">
-            <h2>User list</h2>
+        
+            <div class="user-header">
+                <h2>User List</h2>
+                <button class="create-user">Add User</button>
+            </div>
+        
+            <div class="user-control">
+                <div class="filters">
+                    <button class="filter active">All</button>
+                    <button class="filter">Admin</button>
+                    <button class="filter">Staff</button>
+                    <button class="filter">Intern</button>
+                </div>
+            
+                <div class="search">
+                    <input type="search" placeholder="Search users...">
+                </div>
+            </div>
+        
+            <div class="table-wrapper">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Surname</th>
+                            <th>First Name</th>
+                            <th>Email</th>
+                            <th>Position</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                    
+                        <tr>
+                            <td>USR-001</td>
+                            <td>Dela Cruz</td>
+                            <td>Mark</td>
+                            <td>mark@email.com</td>
+                            <td>Intern</td>
+                            <td><span class="badge status-active">Active</span></td>
+                            <td>
+                                <button class="view-user-btn">
+                                    <i class="fa-regular fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ADD USER MODAL -->
+            <div class="modal-overlay" id="userModal">
+            
+                <div class="modal">
+                
+                    <div class="modal-header">
+                        <h3>Add User</h3>
+                        <button class="close-user-modal">&times;</button>
+                    </div>
+                
+                    <form class="modal-form" id="createUserForm">
+                    
+                        <div class="form-group">
+                            <label>Surname</label>
+                            <input type="text" name="surname" required>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="firstname" required>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" required>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Position</label>
+                            <select name="position" required>
+                                <option value="">Select Position</option>
+                                <option>Admin</option>
+                                <option>Staff</option>
+                                <option>Intern</option>
+                            </select>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select name="status">
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    
+                        <div class="modal-actions">
+                            <button type="button" class="btn-cancel-user">
+                                <i class="fa-solid fa-xmark"></i> Cancel
+                            </button>
+                        
+                            <button type="submit" class="btn-create-user">
+                                <i class="fa-solid fa-user-plus"></i> Create User
+                            </button>
+                        </div>
+                    
+                    </form>
+                
+                </div>
+            
+            </div>
+        
         </section>
 
         <!-- Departments Page -->
