@@ -5,6 +5,7 @@ function init() {
     setupModal();
     setupTicketForm();
     setupUserModal();
+    setupViewTicketModal(); // ADDED
 }
 
 /* ===============================
@@ -90,6 +91,7 @@ function setupTicketForm() {
         const title = formData.get("title");
         const priority = formData.get("priority");
         const assignedTo = formData.get("assignedTo");
+        const departmentName = formData.get("departmentName");
         const dueDate = formData.get("dueDate");
         const estimatedTimeRaw = formData.get("estimatedTime");
 
@@ -102,12 +104,11 @@ function setupTicketForm() {
             const ampm = hour >= 12 ? "PM" : "AM";
         
             hour = hour % 12;
-            hour = hour ? hour : 12; // 0 becomes 12
-        
+            hour = hour ? hour : 12;
+
             formattedEstimatedTime = `${hour}:${minutes} ${ampm}`;
         }
 
-        // Get full date + time
         const now = new Date();
         const createdDateTime = now.toLocaleDateString() + " " + 
                                 now.toLocaleTimeString();
@@ -124,6 +125,7 @@ function setupTicketForm() {
             priority,
             priorityClass,
             assignedTo,
+            departmentName,
             dueDate,
             estimatedTime: formattedEstimatedTime,
             createdDateTime
@@ -143,6 +145,17 @@ function renderTicket(ticket) {
 
     const newRow = document.createElement("tr");
 
+    /* ADDED: store ticket data */
+    newRow.dataset.ticketNumber = ticket.ticketNumber;
+    newRow.dataset.title = ticket.title;
+    newRow.dataset.priority = ticket.priority;
+    newRow.dataset.status = "Open";
+    newRow.dataset.assigned = ticket.assignedTo;
+    newRow.dataset.department = ticket.departmentName;
+    newRow.dataset.due = ticket.dueDate;
+    newRow.dataset.estimated = ticket.estimatedTime;
+    newRow.dataset.created = ticket.createdDateTime;
+
     newRow.innerHTML = `
         <td>${ticket.ticketNumber}</td>
         <td>${ticket.title}</td>
@@ -155,11 +168,12 @@ function renderTicket(ticket) {
             <span class="badge status-open">Open</span>
         </td>
         <td>${ticket.assignedTo}</td>
+        <td>${ticket.departmentName}</td>
         <td>${ticket.dueDate || "-"}</td>
         <td>${ticket.estimatedTime || "-"}</td>
         <td>${ticket.createdDateTime}</td>
         <td>
-            <button class="action-btn">View</button>
+            <button class="action-btn view-ticket">View</button>
         </td>
     `;
 
@@ -176,7 +190,7 @@ function setupUserModal(){
     const modal = document.getElementById("userModal");
     const openBtn = document.querySelector(".create-user");
     const closeBtn = document.querySelector(".close-user-modal");
-    const cancelBtn = document.querySelector(".cancel-user-btn");
+    const cancelBtn = document.querySelector(".btn-cancel-user");
 
     if(!modal) return;
 
@@ -196,6 +210,70 @@ function setupUserModal(){
         if(e.target === modal){
             modal.classList.remove("active");
         }
+    });
+
+}
+
+
+/* ===============================
+   VIEW TICKET MODAL
+================================ */
+
+function setupViewTicketModal(){
+
+    const modal = document.getElementById("viewTicketModal");
+    const closeBtn = document.querySelector(".close-view-modal");
+    const completeBtn = document.getElementById("completeTicketBtn");
+
+    let currentRow = null;
+
+    document.addEventListener("click", function(e){
+
+        const viewBtn = e.target.closest(".view-ticket");
+
+        if(viewBtn){
+
+            const row = viewBtn.closest("tr");
+            currentRow = row;
+
+            /* Use dataset instead of table cells */
+
+            document.getElementById("view-ticket-number").textContent = row.dataset.ticketNumber;
+            document.getElementById("view-title").textContent = row.dataset.title;
+            document.getElementById("view-priority").textContent = row.dataset.priority;
+            document.getElementById("view-status").textContent = row.dataset.status;
+            document.getElementById("view-assigned").textContent = row.dataset.assigned;
+            document.getElementById("view-department").textContent = row.dataset.department;
+            document.getElementById("view-due").textContent = row.dataset.due;
+            document.getElementById("view-estimated").textContent = row.dataset.estimated;
+            document.getElementById("view-created").textContent = row.dataset.created;
+
+            modal.classList.add("active");
+        }
+
+    });
+
+    closeBtn?.addEventListener("click", () => {
+        modal.classList.remove("active");
+    });
+
+    modal?.addEventListener("click", (e)=>{
+        if(e.target === modal){
+            modal.classList.remove("active");
+        }
+    });
+
+    completeBtn?.addEventListener("click", () => {
+
+        if(!currentRow) return;
+
+        const statusCell = currentRow.children[3];
+
+        statusCell.innerHTML = `<span class="badge status-completed">Completed</span>`;
+        currentRow.dataset.status = "Completed";
+
+        modal.classList.remove("active");
+
     });
 
 }

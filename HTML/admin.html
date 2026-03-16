@@ -121,6 +121,7 @@
                             <th>Priority</th>
                             <th>Status</th>
                             <th>Assigned To</th>
+                            <th>Department Name</th>
                             <th>Due Date</th>
                             <th>Estimated Time Finish</th>
                             <th>Created</th>
@@ -174,6 +175,20 @@
                                 <option>User 2</option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label>Department Name</label>
+                            <select name="departmentName" required>
+                                <option value="">Select Priority</option>
+                                <option>School Director's Office</option>
+                                <option>Accounting Office</option>
+                                <option>Basic Education Office</option>
+                                <option>College Library</option>
+                                <option>College of architechture</option>
+                                <option>College of Arts, Sciences and Education</option>
+                                
+                            </select>
+                        </div>
                     
                         <div class="form-group">
                             <label>Due Date</label>
@@ -199,6 +214,76 @@
                 
                 </div>
             </div>
+            
+            <!-- VIEW TICKET MODAL -->
+<div class="modal-overlay" id="viewTicketModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+            <h3>Ticket Details</h3>
+            <button type="button" class="close-view-modal">&times;</button>
+        </div>
+
+        <div class="ticket-details">
+
+            <div class="detail-row">
+                <span>Ticket No:</span>
+                <p id="view-ticket-number">-</p>
+            </div>
+
+            <div class="detail-row">
+                <span>Title:</span>
+                <p id="view-title">-</p>
+            </div>
+
+            <div class="detail-row">
+                <span>Priority:</span>
+                <p id="view-priority">-</p>
+            </div>
+
+            <div class="detail-row">
+                <span>Status:</span>
+                <p id="view-status">-</p>
+            </div>
+
+            <div class="detail-row">
+                <span>Assigned To:</span>
+                <p id="view-assigned">-</p>
+            </div>
+
+            <div class="detail-row">
+                <span>Department:</span>
+                <p id="view-department">-</p>
+            </div>
+
+            <div class="detail-row">
+                <span>Due Date:</span>
+                <p id="view-due">-</p>
+            </div>
+
+            <div class="detail-row">
+                <span>Estimated Time:</span>
+                <p id="view-estimated">-</p>
+            </div>
+
+            <div class="detail-row">
+                <span>Created:</span>
+                <p id="view-created">-</p>
+            </div>
+
+        </div>
+
+        <div class="modal-actions">
+            <button type="button" class="btn-close-ticket" id="completeTicketBtn">
+                <i class="fa-solid fa-check"></i> Mark as Completed
+            </button>
+        </div>
+
+    </div>
+
+</div>
+           
 
         </section>
 
