@@ -189,6 +189,20 @@
                                 
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label>SLA Name</label>
+                            <select name="slaName" required>
+                                <option value="">Select SLA</option>
+                                <option>Service Ticket</option>
+                                <option>HelpDesk Request</option>
+                                <option>Project Task</option>
+                                <option>Daily Task</option>
+                                <option>Operate and Maintenance</option>
+                                <option>Innovation (Process, Technology and People)</option>
+                                <option>Administrative Works</option>
+                            </select>
+                        </div>
                     
                         <div class="form-group">
                             <label>Due Date</label>
@@ -196,8 +210,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Stemated time to finish</label>
-                            <input type="time" name="estimatedTime">
+                            <label>Estimated time to finish</label>
+                            <select name="estimatedTime" required>
+                                <option value="">Select time range</option>
+                                <option>0:01 ms - 2:00 hrs</option>
+                                <option>2:01 hr - 2:59 hrs</option>
+                                <option>3:00 hr - 3:59 hrs</option>
+                                <option>4:00 hr - 5:00 hrs</option>
+                                <option>5:01 hr - 6:00 hrs</option>
+                                <option>6:01 hr - 7:59 hrs</option>
+                            </select>
                         </div>
                     
                         <div class="form-group full-width">

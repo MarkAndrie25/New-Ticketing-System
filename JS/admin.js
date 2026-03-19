@@ -93,21 +93,9 @@ function setupTicketForm() {
         const assignedTo = formData.get("assignedTo");
         const departmentName = formData.get("departmentName");
         const dueDate = formData.get("dueDate");
-        const estimatedTimeRaw = formData.get("estimatedTime");
+        const estimatedTime = formData.get("estimatedTime");
 
-        let formattedEstimatedTime = "-";
-            
-        if (estimatedTimeRaw) {
-            const [hours, minutes] = estimatedTimeRaw.split(":");
-        
-            let hour = parseInt(hours);
-            const ampm = hour >= 12 ? "PM" : "AM";
-        
-            hour = hour % 12;
-            hour = hour ? hour : 12;
-
-            formattedEstimatedTime = `${hour}:${minutes} ${ampm}`;
-        }
+        const formattedEstimatedTime = estimatedTime || "-";
 
         const now = new Date();
         const createdDateTime = now.toLocaleDateString() + " " + 
