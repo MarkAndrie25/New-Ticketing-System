@@ -350,6 +350,46 @@ main {
     background-color: #f9fafb;
 }
 
+
+/* SLA TABLE */
+.sla-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.sla-table thead {
+    background: linear-gradient(135deg, #0B1F3A 0%, #142D55 100%);
+    color: white;
+}
+
+.sla-table th {
+    padding: 15px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.sla-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.sla-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.sla-table tbody tr:hover {
+    background-color: #f0f7ff;
+    box-shadow: inset 0 0 5px rgba(59, 130, 246, 0.1);
+}
+
+.sla-table tbody tr:nth-child(odd) {
+    background-color: #fafbfc;
+}
+
 /* BADGES */
 .badge {
     padding: 4px 10px;
