@@ -122,6 +122,7 @@
                             <th>Status</th>
                             <th>Assigned To</th>
                             <th>Department Name</th>
+                            <th>SLA Name</th>
                             <th>Due Date</th>
                             <th>Estimated Time Finish</th>
                             <th>Created</th>
@@ -280,6 +281,11 @@
             </div>
 
             <div class="detail-row">
+                <span>SLA Name:</span>
+                <p id="view-sla">-</p>
+            </div>
+
+            <div class="detail-row">
                 <span>Due Date:</span>
                 <p id="view-due">-</p>
             </div>
@@ -292,6 +298,11 @@
             <div class="detail-row">
                 <span>Created:</span>
                 <p id="view-created">-</p>
+            </div>
+
+            <div class="detail-row">
+                <span>Description:</span>
+                <p id="view-description">-</p>
             </div>
 
         </div>
@@ -321,7 +332,8 @@
                 <div class="filters">
                     <button class="filter active">All</button>
                     <button class="filter">Admin</button>
-                    <button class="filter">Staff</button>
+                    <button class="filter">Employee</button>
+                    <button class="filter">Technical Support</button>
                     <button class="filter">Intern</button>
                 </div>
             
@@ -339,26 +351,13 @@
                             <th>First Name</th>
                             <th>Email</th>
                             <th>Position</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                 
                     <tbody>
                     
-                        <tr>
-                            <td>USR-001</td>
-                            <td>Dela Cruz</td>
-                            <td>Mark</td>
-                            <td>mark@email.com</td>
-                            <td>Intern</td>
-                            <td><span class="badge status-active">Active</span></td>
-                            <td>
-                                <button class="view-user-btn">
-                                    <i class="fa-regular fa-eye"></i> View
-                                </button>
-                            </td>
-                        </tr>
+                        
                     
                     </tbody>
                 </table>
@@ -401,16 +400,9 @@
                             <select name="position" required>
                                 <option value="">Select Position</option>
                                 <option>Admin</option>
-                                <option>Staff</option>
+                                <option>Employee</option>
+                                <option>Technical Support</option>
                                 <option>Intern</option>
-                            </select>
-                        </div>
-                    
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select name="status">
-                                <option>Active</option>
-                                <option>Inactive</option>
                             </select>
                         </div>
                     
